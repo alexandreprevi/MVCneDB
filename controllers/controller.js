@@ -1,6 +1,9 @@
-// const db = require("../app").db;
+const postModel = require("../models/posts");
+const commentModel = require("../models/comments");
 
 exports.getPosts = (req, res) => {
+  postModel.getPost();
+
   db.posts.find({}, (err, result) => {
     if (err) res.status(500).send(err);
     res.send(result);
