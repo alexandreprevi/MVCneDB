@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require("uuid");
 bodyParser = require("body-parser");
 
 // database
-var Datastore = require("nedb");
+var Datastore = require("nedb-promise");
 db = {};
 db.posts = new Datastore({ filename: __dirname + "/database/posts.db" });
 db.comments = new Datastore({ filename: __dirname + "/database/comments.db" });
@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // router
-const router = require("./routes/api");
+const router = require("./routes/routes");
 app.use("/", router);
 
 app.listen(3000, () => {
